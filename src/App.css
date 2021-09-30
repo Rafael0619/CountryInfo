@@ -107,6 +107,7 @@
 .justify-content-right{
   justify-content: end;
 }
+
 .margintop{
   margin-top: 70px;
 }
@@ -201,4 +202,21 @@
 
 .margin-left{
   margin-left: 48vw;
+}
+.col-10{
+  width:83%;
+}
+.margin-auto{
+  margin: auto;
+}
+
+.col-5{
+ width: 40%;
+}
+
+.col-2{
+  width: 20% ;
+}
+.direction-column{
+  flex-direction: column;
 }
