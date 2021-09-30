@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from "react";
 import { useParams } from "react-router";
+import Loading from "../components/Loading";
 import SendCapitalWeather from "../components/SendCapitalWeather";
-
+import FetchError from "../components/FetchError";
 
 
 
@@ -22,6 +23,7 @@ const CapitalWeather = ({}) =>{
         const result = await response.json();
         console.log(result);
         if(result.message){
+            console.log("si funciona")
             setError(result.message)
             setLoading(true)
         }else{
@@ -40,25 +42,10 @@ const CapitalWeather = ({}) =>{
 
     return(
         <>
-
-            <SendCapitalWeather capitalData={capitalData} city={capitalName} />
-                {/* {
-                <CapitalParameters
-                city={capitalName}
-                weather={capitalData.weather[0].description}
-                icon={capitalData.weather[0].icon}
-                lon={capitalData.coord.lon}
-                lat={capitalData.coord.lat}capitaData
-                temp={capitalData.main.temp}
-                thermal={capitalData.main.feels_like}
-                humidity={capitalData.main.humidity}
-                pressure={capitalData.main.pressure}
-                timezones={capitalData.timezone}
-                visibility={capitalData.visibility}
-                wind_speed={capitalData.wind.speed}
-                wind_deg={capitalData.wind.deg}
-                />
-                } */}
+            {loading ? error ? (
+                <FetchError message={error} /> ):(
+                <SendCapitalWeather capitalData={capitalData} city={capitalName} />
+            ) : <div className="margin-left"><Loading/></div> }
         </>
     )
 }
